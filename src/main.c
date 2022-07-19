@@ -1,4 +1,4 @@
-#include "test.wasm.h"
+#include "helloworld.wasm.h"
 #include "debug.h"
 #include "types.h"
 #include "parse.h"

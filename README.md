@@ -23,15 +23,14 @@ apt install gcc-avr avr-libc avrdude gdb-avr openjdk-11-jdk
 
 ### Compile the WebAssembly module
 1. First, download the WASI SDK to compile `*.c` to WebAssembly.
-Go into `libs` folder, and
+Go into `third-party` folder, and
 ```bash
 wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-12/wasi-sdk-12.0-linux.tar.gz
 tar xvf wasi-sdk-12.0-linux.tar.gz 
 ```
-The WASI SDK should reside in `libs/wasi-sdk-12.0` folder.
+The WASI SDK should reside in `third-party` folder.
 
-2. 
-Modifiy the `CMakeLists.txt` in `example` folder, and
+2. Go into the `example` folder, and compile the example WebAssembly helloworld module using:
 ```bash
 ./compile.sh
 ```
@@ -63,6 +62,14 @@ bash third-party/runwait.sh
 ```
 
 You can see the avrora output.
+
+
+### (Optional) Run your own WebAssembly module
+1. Go to `example` folder, modify the `CMakeLists.txt` to compile your WebAssembly module, and compile it.
+    - The compilation will generate a `xxxx.wasm.h`, which is the WebAssembly module (using a C array to save the WebAssembly binary format).
+2. Modify the `src/main.c` to cope with the `xxxx.wasm.h` header to bring the WebAssembly with WAIT.
+
+
 
 ## TODOs
 - [ ] Code comments in the `src`
